@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #add{
+            background-color: blue;
+            color: #ffffff;
+            border: 1px solid blue;
+        }
+        #delete{
+            background-color: green;
+            color: #ffffff;
+            border: 1px solid green;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        
+        function add_append(){
+            let append = document.getElementById("append");
+            let list = document.getElementById("list");
+            let list_array;
+            if(append.value===""||append.value=="undefined"){
+                return false;
+            }
+            if(append.value.includes(",")){
+                list_array=append.value.split(', ');
+                for(let i=0;i<list_array.length;i++){
+                    list.innerHTML += "<li>"+ list_array[i] +"</li>";
+                }
+            }
+            else{
+                list.innerHTML += "<li>"+ append.value +"</li>";
+            }
+            
+            append.value="";
+        }
+
+        function delete_append(){
+            let append = document.getElementById("append");
+            let list = document.getElementById("list");
+            list.innerHTML = "";
+            append.value="";
+        }
+    </script>
+    <div id="main">
+        <h1>Dynamic Web page</h1>
+        <form>
+            <input type="text" id="append">
+            <button id="add" type="button" onclick="add_append()">추가</button>
+            <button id ="delete" type="button" onclick="delete_append()">삭제</button>
+            <ul id="list">
+            
+            </ul>
+        </form>
+        
+    </div>
+</body>
+</html>
